@@ -1,7 +1,7 @@
 export module Chess {
-    enum ChessPieces {
+    export enum ChessPieces {
         Rook = "R",
-        Knight = "K",
+        Knight = "N",
         Bishop = "B",
         Queen = "Q",
         King = "K",
@@ -12,7 +12,7 @@ export module Chess {
     export class Board {
         board: ChessPieces[][];
         constructor() {
-            const board: ChessPieces[][] = [
+            this.board = [
                 [ChessPieces.Rook,ChessPieces.Knight,ChessPieces.Bishop,ChessPieces.Queen,ChessPieces.King,ChessPieces.Bishop,ChessPieces.Knight,ChessPieces.Rook],
                 [ChessPieces.Pawn,ChessPieces.Pawn,ChessPieces.Pawn,ChessPieces.Pawn,ChessPieces.Pawn,ChessPieces.Pawn,ChessPieces.Pawn,ChessPieces.Pawn],
                 [ChessPieces.Empty,ChessPieces.Empty,ChessPieces.Empty,ChessPieces.Empty,ChessPieces.Empty,ChessPieces.Empty,ChessPieces.Empty,ChessPieces.Empty],
@@ -24,15 +24,18 @@ export module Chess {
             ];
         }
 
-        public getBoard(): string[][] {
+        public getBoard(): ChessPieces[][] {
             return this.board;
         }
 
         public printBoard(): void {
             for(let i: number = 0; i < 8; i++) {
+                const tempArray: ChessPieces[] = [];
                 for(let j: number = 0; j < 8; j++) {
-                    console.log(this.board[i][j]);
+                    tempArray.push(this.board[i][j]);
+                    //console.log(this.board[i][j]);
                 }
+                console.log(tempArray.join(" "));
             }
         }
     }
@@ -41,3 +44,4 @@ export module Chess {
 
     // }
 }
+
